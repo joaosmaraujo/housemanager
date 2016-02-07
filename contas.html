@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <title>Contas Micas e Jonas</title>
+  <link rel="stylesheet" href="themes/smoothness/jquery-ui.css">
+  <script src="jquery-ui-1.10.2/jquery-1.9.1.js"></script>
+  <script src="jquery-ui-1.11.4/jquery-ui.js"></script>
+  <link rel="stylesheet" href="/resources/demos/style.css">
+  <link href="bootstrap-3.3.5-dist/css/bootstrap.min.css" rel="stylesheet">
+  <script src="adicionarConta.js"></script>
+
+  <style>
+      table th, td { padding: 5px;}
+  </style>
+ 
+</head>
+	
+
+<body>
+	
+
+    <div id="nova-conta" title="Registar nova conta" style="font-family: mark">    
+      <fieldset>
+        <form role="form" class="form-inline" id ="formulario-conta" style="font-family: mark; font-size: 14px;">
+            <div class="form-group">
+                <table>
+                    <tr>    
+                        <td><label for="select">Tipo de Conta: </label></td>
+                        <td><select class="form-control" id="select-tipo-conta" style="font-family: mark;">
+                            <option value="Eletricidade">Eletricidade</option>
+                            <option value="Água">Água</option>
+                            <option value="Gás">Gás</option>
+                            <option value="MEO">MEO</option>
+                            <option value="Compras">Compras</option>
+                        </select></td>
+                    </tr>
+                    <tr>
+                        <td><label for="text">Valor: </label></td>
+                        <td><input type="text" name="valor-conta" id="valor-conta" class="text ui-widget-content ui-corner-all"></td>
+                    </tr>
+                    <tr>
+                        <td><label for="select">Quem pagou?</label></td>
+                        <td><select class="form-control" id="select-quem-pagou" style="font-family: mark;">
+                                <option value="Jonas">Jonas</option>
+                                <option value="Micas">Micas</option>
+                            </select></td>
+                    </tr>
+                </table>
+            </div>
+      </form>
+    </fieldset>
+   </div>
+
+ 
+  	<div class="container" style="font-family: mark:">
+        <div class="row">
+            <button type="button" id="btn-adicionar-conta" class="btn btn-default"><span class="glyphicon glyphicon-plus-sign"></span> Adicionar Conta</button>
+        </div>
+		<div class="row">
+			<div class="col-md-12" style="text-align:center; padding: 25px;">Cálculo Contas Micas & Jonas</div>
+		</div>
+		<div class="row">
+            <table class="contas">
+                    <tr>
+                        <th colspan="3" style="text-align:center">Conta</th>
+                        <th colspan="2" style="text-align:center">A Receber</th>
+                    </tr>
+                    <tr>   
+                        <th>Tipo</th>
+                        <th>Valor</th>
+                        <th>Quem pagou?</th>
+                        <th>Quanto?</th>
+                        <th>Quem?</th>
+                     </tr>
+                     <tr>
+                         <td>Luz</td>
+                         <td>36.00</td>
+                         <td>Maria</td>
+                         <td>18.00</td>
+                         <td>Maria</td>  
+                      </tr>
+                </table>
+            </div>
+		</div> 
+  </div>
+  
+  
+  
+</body>
+
+</html>
