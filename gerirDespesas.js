@@ -100,13 +100,36 @@ function adicionarDespesa() {
 
 
 function removerDespesa() {
-    console.log("remover");
-    var table = $('#tabela-despesas').DataTable();
-    table.row('.last-row').remove().draw(false);
-    $('#tabela-despesas tr:last-child td:last-child').html(
-        '<button type="button" class="btn btn-default btn-xs" onclick="removerDespesa()"><span class="glyphicon glyphicon-remove"></span> </button>'
-    );
     
-    $('#tabela-despesas tbody tr:last-child').addClass('last-row');
+    
+
+    var idEliminar = $('td:first', $('tbody .last-row')).text();
+    
+    var despesaEliminar;
+    for (var i = 0; i < despesas.length; i++) {
+        if (despesas[i].idRegisto == idEliminar) {
+            despesaEliminar = despesas[i]
+        }
+    }
+    
+    
+    var registoEliminar = Parse.Object.extend("Despesa");
+    var queryEliminar = new Parse.Query(registoEliminar);
+    queryEliminar.get(idEliminar, {
+        success: function (object) {
+            object.destroy();
+            despesas.splice(despesas.indexOf(despesas[i]),1);
+            
+        }, error: function (object, error) {
+          }
+     }).then(function() {
+        console.log("remover");
+        var table = $('#tabela-despesas').DataTable();
+        table.row('.last-row').remove().draw(false);
+        $('#tabela-despesas tr:last-child td:last-child').html(
+            '<button type="button" class="btn btn-default btn-xs" onclick="removerDespesa()"><span class="glyphicon glyphicon-remove"></span> </button>'
+        );
+        $('#tabela-despesas tbody tr:last-child').addClass('last-row');
+     });
     
 }

@@ -13,7 +13,7 @@ $(document).ready(function() {
                 var valorDespesa = results[x].get("valorDespesa");
                 var quemDeve = results[x].get("quemDeve");
                 var quantoDeve = results[x].get("quantoDeve");
-                var despesa = new Despesa(idRegisto, dataRegisto, dataDespesa, tipoDespesa, descritivoDespesa, quemPagou, valorDespesa, quemDeve, quantoDeve);
+                var despesa = new Despesa(idRegisto, dataRegisto, dataDespesa, tipoDespesa, descritivoDespesa, quemPagou, valorDespesa.toFixed(2), quemDeve, quantoDeve.toFixed(2));
                 despesas.push(despesa);
                 console.log(despesas.length);
             }
