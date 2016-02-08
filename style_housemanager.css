@@ -1,0 +1,64 @@
+@font-face { 
+    font-family: mark; 
+    src: url(fonts/MARKREGULAR.OTF); 
+}
+ 
+body { 
+    font-family: mark; 
+}
+      
+#inicio { 
+    text-align: center; 
+}
+
+#inicio p { 
+    font-size: 45px; 
+    font-weight: 800; 
+    padding: 100px;
+}
+      
+.menu { 
+    margin: 0;
+    padding: 100px 0;
+    height: 100vh;
+    background-color: black;
+    list-style: none;
+}
+      
+.menu-item { 
+    width: 100%;
+    margin: 0;
+    padding: 5px 0; 
+    border: 1px solid white; 
+    background-color: black; 
+    color: white; 
+    text-align: center; 
+}
+      
+.menu li {
+    margin: 0;
+}
+
+table { 
+    float: left;
+}
+
+table th, td { 
+    text-align: center;
+}
+
+form .row { 
+    padding-bottom: 25px;
+}
+
+#tabela-despesas .last-row {
+    background-color: coral;
+}
+
+#descritivo-despesa {
+    width: 70%;
+}
+
+#botoes-form {
+    padding-top: 25px;
+}

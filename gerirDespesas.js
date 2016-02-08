@@ -74,27 +74,27 @@ function adicionarDespesa() {
         // error is a Parse.Error with an error code and message.
         console.log('Failed to create new object, with error code: ' + error.message);
     }
-    });
-    
-    var idRegisto = registoDespesa.id;
-    novaDataRegisto = novaDataRegisto.toISOString().split('T')[0];
-    novaDataDespesa = novaDataDespesa.toISOString().split('T')[0];  
-    
-    var table = $('#tabela-despesas').DataTable();
-    table.row.add( [
-            idRegisto,
-            novaDataRegisto,
-            novaDataDespesa,
-            novoTipoDespesa,
-            novoDescritivoDespesa,
-            novoQuemPagou,
-            novoValorDespesa.toFixed(2),
-            novoQuemDeve,
-            novoQuantoDeve.toFixed(2),
-            '<button type="button" class="btn btn-default btn-xs" onclick="removerDespesa()"><span class="glyphicon glyphicon-remove"></span> </button>'
-        ] ).draw();
+    }).then(function() {    
+        var idRegisto = registoDespesa.id;
+        novaDataRegisto = novaDataRegisto.toISOString().split('T')[0];
+        novaDataDespesa = novaDataDespesa.toISOString().split('T')[0];  
         
-    $('#tabela-despesas tbody tr:last-child').addClass('last-row');
+        var table = $('#tabela-despesas').DataTable();
+        table.row.add( [
+                idRegisto,
+                novaDataRegisto,
+                novaDataDespesa,
+                novoTipoDespesa,
+                novoDescritivoDespesa,
+                novoQuemPagou,
+                novoValorDespesa.toFixed(2),
+                novoQuemDeve,
+                novoQuantoDeve.toFixed(2),
+                '<button type="button" class="btn btn-default btn-xs" onclick="removerDespesa()"><span class="glyphicon glyphicon-remove"></span> </button>'
+            ] ).draw();
+            
+        $('#tabela-despesas tbody tr:last-child').addClass('last-row');
+    });
 
 }
 

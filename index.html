@@ -11,6 +11,7 @@
   <script src="https://cdn.datatables.net/1.10.10/js/jquery.dataTables.min.js"></script>
   <link rel="stylesheet" href="https://cdn.datatables.net/1.10.10/css/jquery.dataTables.min.css">
   <link href="bootstrap-3.3.5-dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="style_housemanager.css" rel="stylesheet">
   <script src="https://www.parse.com/downloads/javascript/parse-1.6.7.js"></script>
   <script src="modeloDados.js"></script>
   <script src="showPages.js"></script>
@@ -18,22 +19,6 @@
   <script src="gerirDespesas.js"></script>
   <script src="gerirFaturas.js"></script>
   <script src="gerirCompras.js"></script>
-  
-  
-
-  <style>
-      @font-face { font-family: mark; src: url(fonts/MARKREGULAR.otf); }
-      body { font-family: mark; }
-      #inicio { text-align: center; }
-      #inicio p { font-size: 45px; font-weight: 800; padding: 100px;}
-      .menu { margin: 0; padding: 100px 0; height: 978px; background-color: black; }
-      .menu-item { width: 100%; margin: 0; padding: 5px 0; border: 1px solid white; background-color: black; color: white; text-align: center; float: center; }
-      .menu li { margin: 0; }
-      table { float: left; }
-      table th, td { text-align: center; }
-      form .row { padding-bottom: 25px; }
-      #tabela-despesas .last-row { background-color: coral; }
-  </style>
  
 </head>
 	
@@ -44,7 +29,7 @@
         <div class="row">
             <!-- MENU LATERAL -->
             <div class="col-sm-3">
-                <ul style="list-style:none;" class="menu">
+                <ul class="menu">
                     <li><button class="menu-item" id="item-despesas" onclick="showdespesas()">Gestão de Despesas</button></li>
                     <li><button class="menu-item" id="item-compras" onclick="showcompras()">Lista de Compras</button></li>
                     <li><button class="menu-item" id="item-tarefas" onclick="showtarefas()">Lista de Tarefas</button></li>
@@ -74,10 +59,12 @@
                                     <div class="col-sm-2">
                                         <label for="opcoes-tipo-despesa" class="control-label">Tipo de despesa: </label>
                                         <select class="form-control" id="opcoes-tipo-despesa">
-                                            <option value="Compras">Compras</option>
+                                            <option value="Renda">Renda</option>
                                             <option value="Eletricidade">Eletricidade</option>
                                             <option value="MEO">MEO</option>
                                             <option value="Água">Água</option>
+                                            <option value="Compras">Compras</option>
+                                            <option value="Outros">Outros</option>
                                         </select>
                                     </div>
                                     <div class="col-sm-2">
@@ -91,7 +78,7 @@
                                 <div class="row form-inline">
                                     <div class="col-sm-6">
                                         <label for="descritivo-despesa" class="control-label">Descritivo: </label>                                   
-                                        <input type="text" id="descritivo-despesa" class="form-control" style="width: 70%;"></input>
+                                        <input type="text" id="descritivo-despesa" class="form-control"></input>
                                     </div>
                                 </div>
                                 <div class="row">
@@ -104,10 +91,10 @@
                                         <p><label class="radio-inline"><input type="radio" name="a-descontar" value="0.5"> Metade</label>
                                         <label class="radio-inline"><input type="radio" name="a-descontar" value="1.0"> Tudo</label></p>
                                     </div>
-                                    <div class="col-sm-1" style="padding-top: 25px;">
+                                    <div class="col-sm-1" class="botoes-form">
                                         <button type="button" class="btn btn-default btn-sm form-control" onclick="adicionarDespesa()"><span class="glyphicon glyphicon-ok-sign"></span> </button>
                                     </div>
-                                    <div class="col-sm-1" style="padding-top: 25px;">
+                                    <div class="col-sm-1" class="botoes-form">
                                         <button type="button" class="btn btn-default btn-sm form-control" onclick="cancelDespesa()"><span class="glyphicon glyphicon-remove-sign"></span> </button>
                                     </div>
                                 </div>
@@ -249,9 +236,6 @@
             </div>
         </div>
     </div>
-    
-  
-  
   
 </body>
 
