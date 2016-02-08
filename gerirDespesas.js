@@ -67,7 +67,7 @@ function adicionarDespesa() {
         descritivoDespesa: novoDescritivoDespesa
     }, {
         success: function(registoDespesa) {
-            console.log(registoDespesa.id);        
+                    
         },
     error: function(gameScore, error) {
         // Execute any logic that should take place if the save fails.
@@ -101,9 +101,10 @@ function adicionarDespesa() {
 
 function removerDespesa() {
     
+    var table = $('#tabela-despesas').DataTable();
     
-
-    var idEliminar = $('td:first', $('tbody .last-row')).text();
+    var idEliminar = table.row($('tbody .last-row')).data()[0];
+    console.log(idEliminar);
     
     var despesaEliminar;
     for (var i = 0; i < despesas.length; i++) {

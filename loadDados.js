@@ -15,14 +15,12 @@ $(document).ready(function() {
                 var quantoDeve = results[x].get("quantoDeve");
                 var despesa = new Despesa(idRegisto, dataRegisto, dataDespesa, tipoDespesa, descritivoDespesa, quemPagou, valorDespesa.toFixed(2), quemDeve, quantoDeve.toFixed(2));
                 despesas.push(despesa);
-                console.log(despesas.length);
             }
         }, error: function (error) {
         alert("impossivel carregar anuncios");
       }                                                                                   
     }).then(function() {
         for (var i = 0; i < despesas.length; i++) {
-            console.log(despesas[i])
             var table = $('#tabela-despesas').DataTable();
             table.row.add( [
                 despesas[i].idRegisto,
