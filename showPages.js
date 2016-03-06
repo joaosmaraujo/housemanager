@@ -11,16 +11,16 @@ $(document).ready(function() {
     $('#form-tarefa').hide();
     $('#form-receita').hide();
     $('table').DataTable({
-        paging: false,
-        ordering: false,
+        paging: true,
         searching: false,
         info: false,
+        lengthChange: false,
+        "pageLength": 10,
         "columnDefs": [
             {
                 "targets": [ 0 ],
                 "visible": false,
-                "searchable": false
-            }
+            },
         ]
     });
 });

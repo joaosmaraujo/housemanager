@@ -5,7 +5,7 @@ $(document).ready(function() {
        success: function (results) {
             for(x in results) {
                 var idRegisto = results[x].id;
-                var dataRegisto = results[x].createdAt.toISOString().split('T')[0];
+                var dataRegisto = results[x].createdAt.toISOString().split('T')[0] + " " + results[x].createdAt.toISOString().split('T')[1].split('.')[0];
                 var dataDespesa = results[x].get("dataDespesa").toISOString().split('T')[0];
                 var tipoDespesa = results[x].get("tipoDespesa");
                 var descritivoDespesa = results[x].get("descritivoDespesa");
@@ -33,12 +33,15 @@ $(document).ready(function() {
                 despesas[i].quemDeve,
                 despesas[i].quantoDeve,
                 ""
-            ] ).draw();
+            ] ).column( '0:visible' )
+                .order( 'desc' )
+                .draw();
         }
-        $('#tabela-despesas tbody tr:last-child td:last-child').html(
+        $('#tabela-despesas tbody tr:first-child td:last-child').html(
             '<button type="button" class="btn btn-default btn-xs" onclick="removerDespesa()"><span class="glyphicon glyphicon-remove"></span> </button>'    
         );
-        $('#tabela-despesas tbody tr:last-child').addClass('last-row');    
+        $('#tabela-despesas tbody tr:first-child').addClass('first-row');    
+       
     });
     
     

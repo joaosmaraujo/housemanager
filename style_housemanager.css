@@ -40,6 +40,10 @@ body {
     margin: 0;
 }
 
+.menu li button {
+    padding: 10px;
+}
+
 table { 
     float: left;
 }
@@ -52,7 +56,7 @@ form .row {
     padding-bottom: 25px;
 }
 
-#tabela-despesas .last-row {
+#tabela-despesas .first-row {
     background-color: coral;
 }
 

@@ -8,8 +8,13 @@ function cancelDespesa() {
 
 function adicionarDespesa() {
     
-    $('#tabela-despesas tr:last-child td:last-child').html("");
-    $('#tabela-despesas tbody tr:last-child').removeClass('last-row');
+    var tabelaDespesas = $('#tabela-despesas').DataTable();
+    tabelaDespesas.column( '0:visible' )
+                .order( 'desc' )
+                .draw();
+    
+    $('#tabela-despesas tr:first-child td:last-child').html("");
+    $('#tabela-despesas tbody tr:first-child').removeClass('first-row');
     
     var aDescontar = parseFloat($("input[name='a-descontar']:checked").val());
     var novaDataRegisto = new Date();
@@ -19,10 +24,10 @@ function adicionarDespesa() {
     var novoQuemPagou = $('#opcoes-quem-pagou').val();
     var novoDescritivoDespesa = $('#descritivo-despesa').val();
     var novoValorDespesa = parseFloat($('#valor-despesa').val());
-    var novoQuemDeve = $('#tabela-despesas tr:last-child td:nth-child(7)').text();
+    var novoQuemDeve = $('#tabela-despesas tr:first-child td:nth-child(7)').text();
     var novoQuantoDeve = 0;
     var valorADescontar = novoValorDespesa * aDescontar;
-    var dividaAcumulada = parseFloat($('#tabela-despesas tr:last-child td:nth-child(8)').text());
+    var dividaAcumulada = parseFloat($('#tabela-despesas tr:first-child td:nth-child(8)').text());
     if (isNaN(dividaAcumulada)) {
         novoQuantoDeve = valorADescontar;
         if (novoQuemPagou == "Micas") {
@@ -76,11 +81,10 @@ function adicionarDespesa() {
     }
     }).then(function() {    
         var idRegisto = registoDespesa.id;
-        novaDataRegisto = novaDataRegisto.toISOString().split('T')[0];
+        novaDataRegisto = novaDataRegisto.toISOString().split('T')[0] + " " + novaDataRegisto.toISOString().split('T')[1].split('.')[0];
         novaDataDespesa = novaDataDespesa.toISOString().split('T')[0];  
         
-        var table = $('#tabela-despesas').DataTable();
-        table.row.add( [
+        tabelaDespesas.row.add( [
                 idRegisto,
                 novaDataRegisto,
                 novaDataDespesa,
@@ -91,9 +95,11 @@ function adicionarDespesa() {
                 novoQuemDeve,
                 novoQuantoDeve.toFixed(2),
                 '<button type="button" class="btn btn-default btn-xs" onclick="removerDespesa()"><span class="glyphicon glyphicon-remove"></span> </button>'
-            ] ).draw();
+            ] ).column( '0:visible' )
+                .order( 'desc' )
+                .draw();
             
-        $('#tabela-despesas tbody tr:last-child').addClass('last-row');
+        $('#tabela-despesas tbody tr:first-child').addClass('first-row');
     });
 
 }
@@ -102,9 +108,11 @@ function adicionarDespesa() {
 function removerDespesa() {
     
     var table = $('#tabela-despesas').DataTable();
+    table.column( '0:visible' )
+                .order( 'desc' )
+                .draw();
     
-    var idEliminar = table.row($('tbody .last-row')).data()[0];
-    console.log(idEliminar);
+    var idEliminar = table.row($('tbody .first-row')).data()[0];
     
     var despesaEliminar;
     for (var i = 0; i < despesas.length; i++) {
@@ -124,13 +132,12 @@ function removerDespesa() {
         }, error: function (object, error) {
           }
      }).then(function() {
-        console.log("remover");
         var table = $('#tabela-despesas').DataTable();
-        table.row('.last-row').remove().draw(false);
-        $('#tabela-despesas tr:last-child td:last-child').html(
+        table.row('.first-row').remove().draw(false);
+        $('#tabela-despesas tr:first-child td:last-child').html(
             '<button type="button" class="btn btn-default btn-xs" onclick="removerDespesa()"><span class="glyphicon glyphicon-remove"></span> </button>'
         );
-        $('#tabela-despesas tbody tr:last-child').addClass('last-row');
+        $('#tabela-despesas tbody tr:first-child').addClass('first-row');
      });
     
 }
